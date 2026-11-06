@@ -1,5 +1,7 @@
 import { getLocalStorage } from "./utils.mjs";
 
+// Oops. There's a bug.
+
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   if (cartItems !== null) {
