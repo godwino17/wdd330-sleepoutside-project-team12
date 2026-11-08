@@ -1,4 +1,4 @@
-import { getParam } from "./utils.mjs";
+import { getParam, countItems } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import productDetails from "./productDetails.mjs";
 
@@ -8,3 +8,5 @@ const productID = getParam("product");
 
 const product = new productDetails(productID, dataSource);
 product.init();
+
+countItems();
