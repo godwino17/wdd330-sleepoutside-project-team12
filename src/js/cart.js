@@ -1,4 +1,9 @@
-import { getLocalStorage, setLocalStorage, countItems, loadHeaderFooter } from "./utils.mjs";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  countItems,
+  loadHeaderFooter,
+} from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -54,6 +59,5 @@ document.querySelector(".product-list").addEventListener("click", (e) => {
     removeItemFromCart(itemID);
   }
 });
-
 
 countItems();
