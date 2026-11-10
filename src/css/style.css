@@ -186,7 +186,6 @@ button {
 .product-list .removeItem {
   grid-column: 3/4;
   grid-row: 1/2;
-  background-color: inherit;
   color: red;
   margin: 0;
   padding: 0.5rem;

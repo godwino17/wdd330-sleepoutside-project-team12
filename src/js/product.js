@@ -1,6 +1,8 @@
-import { getParam, countItems } from "./utils.mjs";
+import { getParam, countItems, loadHeaderFooter } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import productDetails from "./productDetails.mjs";
+
+loadHeaderFooter();
 
 const dataSource = new ProductData("tents");
 
