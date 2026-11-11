@@ -43,6 +43,31 @@ export function countItems() {
 
   const cartItems = getLocalStorage("so-cart");
 
-  number.textContent = cartItems.length;
+  number.textContent = cartItems.length; 
   console.log("Hello!");
 };
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+
+  if (callback) {
+    callback(data);
+  }
+}
+
+async function loadTemplate(path) {
+  const response = await fetch(path);
+  const text = await response.text();
+  return text;
+}
+
+export async function loadHeaderFooter() {
+  const headerPath = await loadTemplate("/partials/header.html");
+  const footerPath = await loadTemplate("/partials/footer.html");
+
+  const headerElement = document.querySelector("#main-header");
+  const footerElement = document.querySelector("#main-footer");
+
+  renderWithTemplate(headerPath, headerElement);
+  renderWithTemplate(footerPath, footerElement);
+}
