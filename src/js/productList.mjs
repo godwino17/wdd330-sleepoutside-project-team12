@@ -1,8 +1,12 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
-
+    
+ // Check if the final price is less than the suggested retail price
  const isDiscounted = product.FinalPrice < product.SuggestedRetailPrice;
+ 
+ // Calculate the exact dollar amount saved
+ const savings = (product.SuggestedRetailPrice - product.FinalPrice).toFixed(2);
 
  return `<li class="product-card">
    <a href="product_pages/?product=${product.Id}">
@@ -10,8 +14,8 @@ function productCardTemplate(product) {
      <h3 class="card__brand">${product.Brand.Name}</h3>
      <h2 class="card__name">${product.Name}</h2>
      
-     <!-- The new discount flag goes here -->
-     ${isDiscounted ? `<p class="discount-badge">Discounted!</p>` : ''}
+     <!-- Updated badge showing the exact savings amount -->
+     ${isDiscounted ? `<p class="discount-badge">Save $${savings}!</p>` : ''}
      
      <p class="product-card__price">$${product.FinalPrice}</p>
    </a>
