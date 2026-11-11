@@ -1,7 +1,8 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, countItems } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
+
   if (cartItems !== null) {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
@@ -18,6 +19,7 @@ function removeItemFromCart(itemID) {
 
   // Call renderCartContents function to display Cart content.
   renderCartContents();
+  countItems();
 }
 
 function cartItemTemplate(item) {
@@ -50,3 +52,6 @@ document.querySelector(".product-list").addEventListener("click", (e) => {
     removeItemFromCart(itemID);
   }
 });
+
+
+countItems();

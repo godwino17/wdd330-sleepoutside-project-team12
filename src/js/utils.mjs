@@ -36,4 +36,13 @@ export function getParam(param) {
   const queryString = window.location.search;
   const urlParam = new URLSearchParams(queryString);
   return urlParam.get(param);
-}
+};
+
+export function countItems() {
+  const number = document.getElementById("amount");
+
+  const cartItems = getLocalStorage("so-cart");
+
+  number.textContent = cartItems.length;
+  console.log("Hello!");
+};
