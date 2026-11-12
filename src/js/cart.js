@@ -1,4 +1,11 @@
-import { getLocalStorage, setLocalStorage, countItems } from "./utils.mjs";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  countItems,
+  loadHeaderFooter,
+} from "./utils.mjs";
+
+loadHeaderFooter();
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -52,6 +59,5 @@ document.querySelector(".product-list").addEventListener("click", (e) => {
     removeItemFromCart(itemID);
   }
 });
-
 
 countItems();
