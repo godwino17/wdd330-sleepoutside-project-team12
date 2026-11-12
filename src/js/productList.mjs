@@ -31,14 +31,28 @@ export default class ProductList{
     }
 
     async init() {
-        const list = await this.dataSource.getData();
-        this.renderList(list);
-    }
+   // 1. Get the list of products from the data source
+   let list = await this.dataSource.getData(this.category);
 
-    renderList(list) {
-        // const htmlString= list.map(productCardTemplate);
-        // this.listElement.innerHTML = htmlString.join("");
+   // 2. Check if a search query exists in the URL (e.g. ?search=tent)
+   const urlParams = new URLSearchParams(window.location.search);
+   const searchQuery = urlParams.get("search");
 
-        renderListWithTemplate(productCardTemplate, this.listElement, list);
-    }
+   if (searchQuery) {
+     // Filter the product list based on the search query
+     list = list.filter((product) =>
+       product.NameWithoutBrand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+       product.DescriptionHtmlSimple.toLowerCase().includes(searchQuery.toLowerCase())
+     );
+
+     // Optional: Update page title if present
+     const titleElement = document.querySelector(".products-title");
+     if (titleElement) {
+       titleElement.textContent = `Search Results for "${searchQuery}"`;
+     }
+   }
+
+   // 3. Render the filtered or full list
+   this.renderList(list);
+ }
 }
