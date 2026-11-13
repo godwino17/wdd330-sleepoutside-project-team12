@@ -46,3 +46,27 @@ export function countItems() {
   number.textContent = cartItems.length;
   console.log("Hello!");
 };
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+  if (callback) {
+    callback(data);
+  }
+}
+
+async function loadTemplate(path) {
+  const response = await fetch(path);
+  const templateText = await response.text();
+  return templateText;
+}
+
+export async function loadHeaderFooter() {
+  const headerPath = await loadTemplate("/partials/header.html");
+  const footerPath = await loadTemplate("/partials/footer.html");
+
+  const headerElement = document.getElementById("main-header");
+  const footerElement = document.getElementById("main-footer");
+
+  renderWithTemplate(headerPath, headerElement);
+  renderWithTemplate(footerPath, footerElement);
+}
