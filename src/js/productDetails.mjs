@@ -4,13 +4,20 @@ export default class productDetails {
     constructor(productID, dataSource) {
         this.productId = productID; // from getParam in utils
         this.dataSource = dataSource; // from productData in productData
-        this.product = {}
+        this.product = {};
     }
 
     addProductToCart() {
         // Get pre existing items from Localstorage, if none exist start from empty array.
         const cartItems = getLocalStorage("so-cart") || [];
-        cartItems.push(this.product); // Add item(product) to the array.
+        const existing = cartItems.find((item) => item.Id === this.product.Id);
+
+        if (existing) {
+            existing.Quantity = (existing.Quantity || 1) + 1;
+        } else {
+            cartItems.push({ ...this.product, Quantity: 1 });
+        } // Add item(product) to the array and also check whether there is an order already existing that require to be looked into.
+        
         setLocalStorage("so-cart", cartItems); // Set the array back to Localstorage.
         countItems();
     }
@@ -27,7 +34,7 @@ export default class productDetails {
         document.querySelector(".product__color").textContent = product.Colors[0].ColorName;
         document.querySelector(".product__description").textContent = product.DescriptionHtmlSimple;
 
-        document.querySelector("#addToCart").dataset.id = product.id;
+        document.querySelector("#addToCart").dataset.id = product.Id;
     }
 
     async init() {

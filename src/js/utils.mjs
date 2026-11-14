@@ -40,9 +40,18 @@ export function getParam(param) {
 
 export function countItems() {
   const number = document.getElementById("amount");
+  if (!number) return;
+  const raw = getLocalStorage("so-cart");
 
-  const cartItems = getLocalStorage("so-cart");
+  // Guarantee an array no matter what's in storage
+  const cartItems = Array.isArray(raw) ? raw : [];
 
-  number.textContent = cartItems.length;
-  console.log("Hello!");
-};
+  // Heal the store so other pages don't hit the same crash
+  if (raw !== null && !Array.isArray(raw)) {
+    console.warn("so-cart was not an array; resetting to []", raw);
+    setLocalStorage("so-cart", []);
+  }
+
+  const count = cartItems.reduce((sum, item) => sum + (item.Quantity || 1), 0);
+  badge.textContent = count;
+}
