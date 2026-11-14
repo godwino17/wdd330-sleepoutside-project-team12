@@ -293,6 +293,20 @@ button {
   grid-column: 3;
 }
 
+.product-category {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 1rem 0 0 0;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.product-category a {
+  text-decoration: none;
+  color: green;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -306,6 +320,11 @@ button {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
+  }
+
+  .product-category img {
+    width: 100px;
+    height: 100px;
   }
 }
 
