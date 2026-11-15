@@ -39,6 +39,7 @@ export default class ProductList{
         // const htmlString= list.map(productCardTemplate);
         // this.listElement.innerHTML = htmlString.join("");
 
+        console.log(this.category);
         renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
 }

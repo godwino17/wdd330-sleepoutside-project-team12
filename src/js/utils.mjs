@@ -30,6 +30,7 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
   // parentElement.innerHTML = htmlStrings.join("");
+  countInventory();
 }
 
 export function getParam(param) {
@@ -43,7 +44,7 @@ export function countItems() {
 
   const cartItems = getLocalStorage("so-cart");
 
-  number.textContent = cartItems.length;
+  // number.textContent = cartItems.length;
   console.log("Hello!");
 };
 
@@ -69,4 +70,22 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerPath, headerElement);
   renderWithTemplate(footerPath, footerElement);
+}
+
+export function countInventory() {
+  const productContainer = document.getElementById("product-detail");
+  const breadcrumb = document.getElementById("breadcrumb");
+  const productCategory = document.getElementById("product-category");
+  
+  
+  if (breadcrumb) {
+    const category = getParam("category");
+    const numberOfItems = productContainer.childElementCount;
+    breadcrumb.textContent = `${category}: ${numberOfItems} items.`;
+  }
+
+  if (productCategory) {
+    productCategory.textContent = `Product category`;
+  }
+
 }
