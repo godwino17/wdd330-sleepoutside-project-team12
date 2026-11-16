@@ -7,6 +7,20 @@ import {
 
 loadHeaderFooter();
 
+function calculateCartTotal() {
+  const cart = getLocalStorage("so-cart"); // Get cart array from localStorage.
+
+  let total = 0; // Initialize var to store total price.
+  // check if the is item in the cart before calculating the price.
+  if (cart.length !== 0) {
+    cart.forEach(price => {
+      total += price.FinalPrice;
+    })
+    // Display the total price.
+    document.getElementById("cart-total").textContent = `$${total.toFixed(2)}`;
+  }
+}
+
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
 
@@ -21,12 +35,17 @@ function removeItemFromCart(itemID) {
   const cartItems = getLocalStorage("so-cart");
   // Filter cart content to remove the given ID passed through the parameter
   const updateCartItems = cartItems.filter((item) => item.Id !== itemID);
+  // Check if updated cart is empty, if yes.
+  if (updateCartItems.length == 0) {
+    cartFooter.classList.replace("show", "hide"); // Permission denied to display cart total details.
+  }
   // Set the updated array back to localStorage
   setLocalStorage("so-cart", updateCartItems);
 
   // Call renderCartContents function to display Cart content.
   renderCartContents();
   countItems();
+  calculateCartTotal(); // calculate and display cart total.
 }
 
 function cartItemTemplate(item) {
@@ -61,3 +80,10 @@ document.querySelector(".product-list").addEventListener("click", (e) => {
 });
 
 countItems();
+const cartFooter = document.querySelector(".cart-footer");
+// When the page loads for the first time.
+// This code checks if item is in cart before calculating and displaying cart total price
+if (getLocalStorage("so-cart").length !== 0) {
+  cartFooter.classList.replace("hide", "show"); // Permission granted to display cart total details.
+  calculateCartTotal(); // calculate and display cart total.
+} 
