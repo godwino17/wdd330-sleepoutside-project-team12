@@ -302,6 +302,14 @@ button {
   flex-wrap: wrap;
 }
 
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
 .product-category a {
   text-decoration: none;
   color: green;
