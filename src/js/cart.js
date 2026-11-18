@@ -1,11 +1,4 @@
-import {
-  getLocalStorage,
-  setLocalStorage,
-  countItems,
-  loadHeaderFooter,
-} from "./utils.mjs";
-
-loadHeaderFooter();
+import { getLocalStorage, setLocalStorage, countItems } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -21,12 +14,17 @@ function removeItemFromCart(itemID) {
   const cartItems = getLocalStorage("so-cart");
   // Filter cart content to remove the given ID passed through the parameter
   const updateCartItems = cartItems.filter((item) => item.Id !== itemID);
+  // Check if updated cart is empty, if yes.
+  if (updateCartItems.length == 0) {
+    cartFooter.classList.replace("show", "hide"); // Permission denied to display cart total details.
+  }
   // Set the updated array back to localStorage
   setLocalStorage("so-cart", updateCartItems);
 
   // Call renderCartContents function to display Cart content.
   renderCartContents();
   countItems();
+  calculateCartTotal(); // calculate and display cart total.
 }
 
 function cartItemTemplate(item) {
