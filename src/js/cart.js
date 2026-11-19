@@ -7,10 +7,11 @@ import {
 
 loadHeaderFooter();
 
+let total = 0; // Var to store total price.
+
 function calculateCartTotal() {
   const cart = getLocalStorage("so-cart"); // Get cart array from localStorage.
 
-  let total = 0; // Initialize var to store total price.
   // check if the is item in the cart before calculating the price.
   if (cart.length !== 0) {
     cart.forEach(price => {
@@ -45,7 +46,8 @@ function removeItemFromCart(itemID) {
   // Call renderCartContents function to display Cart content.
   renderCartContents();
   countItems();
-  calculateCartTotal(); // calculate and display cart total.
+  total = 0; //  Reset total price back to 0 for a fresh calculation.
+  calculateCartTotal(); // calculate and display new updated cart total.
 }
 
 function cartItemTemplate(item) {
@@ -86,4 +88,4 @@ const cartFooter = document.querySelector(".cart-footer");
 if (getLocalStorage("so-cart").length !== 0) {
   cartFooter.classList.replace("hide", "show"); // Permission granted to display cart total details.
   calculateCartTotal(); // calculate and display cart total.
-} 
+}

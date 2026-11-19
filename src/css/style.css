@@ -165,7 +165,7 @@ button {
   text-align: center;
 }
 
-.products {
+.products, .summary {
   margin-top: 2rem;
   padding: 1rem;
 }
@@ -300,6 +300,25 @@ button {
   margin: 1rem 0 0 0;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.cart-footer {
+  text-align: center;
+}
+
+.checkout {
+  margin: 0 auto;
+  padding: .5rem 1rem;
+  border-radius: 5rem;
+  & a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    padding: 3px;
+    border-bottom: 2px solid var(--secondary-color);
+    &:hover {
+        color: midnightblue;
+    }
+  }
 }
 
 .hide {
