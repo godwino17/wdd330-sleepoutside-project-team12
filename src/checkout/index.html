@@ -69,16 +69,16 @@
       </section>
       <section class="products">
         <h2>Review & Place your Order</h2>
-        <form id="my-form">
+        <form id="my-form" name="checkout">
           <fieldset>
             <legend>Customer Name</legend>
             <div>
               <label for="firstName">First Name:</label>
-              <input type="text" name="firstName" id="firstName" required>
+              <input type="text" name="fname" id="firstName" required>
             </div>
             <div>
               <label for="lastName">Last Name:</label>
-              <input type="text" name="lastName" id="lastName" required>
+              <input type="text" name="lname" id="lastName" required>
             </div>
           </fieldset>
 
@@ -98,7 +98,7 @@
             </div>
             <div>
               <label for="zip-code">Zip Code:</label>
-              <input type="" name="zip-code" id="zip-code" required>
+              <input type="text" name="zip" id="zip-code" required>
             </div>
           </fieldset>
 
@@ -106,17 +106,18 @@
             <legend>Payment</legend>
             <div>
               <label for="cardNo">Credit Card Number:</label>
-              <input type="number" name="cardNo" id="cardNo" required>
+              <input type="text" name="cardNumber" id="cardNo" required>
             </div>
             <div>
               <label for="expireDate">Expiration Date:</label>
-              <input type="date" name="expireDate" id="expireDate" required>
+              <input type="text" name="expiration" id="expireDate" required>
             </div>
             <div>
               <label for="secCode">Security Code:</label>
-              <input type="number" name="secCode" id="secCode" required>
+              <input type="number" name="code" id="secCode" required>
             </div>
           </fieldset>
+          <input type="hidden" id="orderDate" name="orderDate">
 
           <div>
             <button type="submit" id="checkoutBtn">Checkout</button>

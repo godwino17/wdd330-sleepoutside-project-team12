@@ -3,7 +3,7 @@ import { setLocalStorage, getLocalStorage, countItems } from "./utils.mjs";
 export default class productDetails {
     constructor(productID, dataSource) {
         this.productId = productID; // from getParam in utils
-        this.dataSource = dataSource; // from productData in productData
+        this.dataSource = dataSource; // from ExternalServices in ExternalServices
         this.product = {}
     }
 

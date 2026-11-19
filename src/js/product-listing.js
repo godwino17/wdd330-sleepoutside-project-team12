@@ -1,4 +1,4 @@
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./productList.mjs";
 import { countItems, loadHeaderFooter, getParam } from "./utils.mjs";
 
@@ -8,7 +8,7 @@ const category = getParam("category");
 
 document.querySelector("h2").textContent += `: ${category.charAt(0).toUpperCase() + category.slice(1)}`;
 
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 
 const element = document.querySelector(".product-list");
 
