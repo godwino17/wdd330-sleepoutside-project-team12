@@ -1,6 +1,5 @@
 import { loadHeaderFooter, getLocalStorage } from "./utils.mjs";
 import CheckoutProcess from "./checkoutProcess.mjs";
-// import { packageItems } from "./checkoutProcess.mjs";
 
 loadHeaderFooter();
 
