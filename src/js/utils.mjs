@@ -46,3 +46,21 @@ export function countItems() {
   number.textContent = cartItems.length; 
   console.log("Hello!");
 };
+
+export function countInventory() {
+  const productContainer = document.getElementById("product-detail");
+  const breadcrumb = document.getElementById("breadcrumb");
+  const productCategory = document.getElementById("product-category");
+  
+  
+  if (breadcrumb) {
+    const category = getParam("category");
+    const numberOfItems = productContainer.childElementCount;
+    breadcrumb.textContent = `${category}: ${numberOfItems} items.`;
+  }
+
+  if (productCategory) {
+    productCategory.textContent = `Product category`;
+  }
+
+}
