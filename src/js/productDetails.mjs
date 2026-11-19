@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage, countItems } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, countItems, countInventory } from "./utils.mjs";
 
 export default class productDetails {
     constructor(productID, dataSource) {
@@ -28,6 +28,8 @@ export default class productDetails {
         document.querySelector(".product__description").textContent = product.DescriptionHtmlSimple;
 
         document.querySelector("#addToCart").dataset.id = product.id;
+
+        countInventory();
     }
 
     async init() {

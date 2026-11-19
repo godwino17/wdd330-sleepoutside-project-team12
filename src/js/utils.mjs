@@ -43,30 +43,24 @@ export function countItems() {
 
   const cartItems = getLocalStorage("so-cart");
 
-  number.textContent = cartItems.length;
+  number.textContent = cartItems.length; 
   console.log("Hello!");
 };
 
-export function renderWithTemplate(template, parentElement, data, callback) {
-  parentElement.innerHTML = template;
-  if (callback) {
-    callback(data);
+export function countInventory() {
+  const productContainer = document.getElementById("product-detail");
+  const breadcrumb = document.getElementById("breadcrumb");
+  const productCategory = document.getElementById("product-category");
+  
+  
+  if (breadcrumb) {
+    const category = getParam("category");
+    const numberOfItems = productContainer.childElementCount;
+    breadcrumb.textContent = `${category}: ${numberOfItems} items.`;
   }
-}
 
-async function loadTemplate(path) {
-  const response = await fetch(path);
-  const templateText = await response.text();
-  return templateText;
-}
+  if (productCategory) {
+    productCategory.textContent = `Product category`;
+  }
 
-export async function loadHeaderFooter() {
-  const headerPath = await loadTemplate("/partials/header.html");
-  const footerPath = await loadTemplate("/partials/footer.html");
-
-  const headerElement = document.getElementById("main-header");
-  const footerElement = document.getElementById("main-footer");
-
-  renderWithTemplate(headerPath, headerElement);
-  renderWithTemplate(footerPath, footerElement);
 }
