@@ -1,14 +1,23 @@
-import ProductData from "./ProductData.mjs";
-import ProductList from "./productList.mjs";
-import { countItems } from "./utils.mjs";
+import { initNewsletterSignup } from "./newsletter.mjs";
 
-const dataSource = new ProductData("tents");
+initNewsletterSignup();
 
-const element = document.querySelector(".product-list");
+async function initHomePageModules() {
+ try {
+   const { default: ProductData } = await import("./ProductData.mjs");
+   const { default: ProductList } = await import("./productList.mjs");
+   const { countItems } = await import("./utils.mjs");
 
+   const dataSource = new ProductData("tents");
+   const element = document.querySelector(".product-list");
+   const productList = new ProductList("Tents", dataSource, element);
 
-const productList = new ProductList("Tents", dataSource, element);
+   productList.init();
+   countItems();
+ } catch (error) {
 
-productList.init();
+   console.warn("Product modules skipped on Live Server:", error.message);
+ }
+}
 
-countItems();
+initHomePageModules();
