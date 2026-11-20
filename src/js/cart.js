@@ -1,4 +1,25 @@
-import { getLocalStorage, setLocalStorage, countItems } from "./utils.mjs";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  countItems,
+  loadHeaderFooter,
+} from "./utils.mjs";
+
+loadHeaderFooter();
+
+function calculateCartTotal() {
+  const cart = getLocalStorage("so-cart"); // Get cart array from localStorage.
+
+  let total = 0; // Initialize var to store total price.
+  // check if the is item in the cart before calculating the price.
+  if (cart.length !== 0) {
+    cart.forEach(price => {
+      total += price.FinalPrice;
+    })
+    // Display the total price.
+    document.getElementById("cart-total").textContent = `$${total.toFixed(2)}`;
+  }
+}
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -24,7 +45,8 @@ function removeItemFromCart(itemID) {
   // Call renderCartContents function to display Cart content.
   renderCartContents();
   countItems();
-  calculateCartTotal(); // calculate and display cart total.
+  total = 0; //  Reset total price back to 0 for a fresh calculation.
+  calculateCartTotal(); // calculate and display new updated cart total.
 }
 
 function cartItemTemplate(item) {
@@ -59,3 +81,10 @@ document.querySelector(".product-list").addEventListener("click", (e) => {
 });
 
 countItems();
+const cartFooter = document.querySelector(".cart-footer");
+// When the page loads for the first time.
+// This code checks if item is in cart before calculating and displaying cart total price
+if (getLocalStorage("so-cart").length !== 0) {
+  cartFooter.classList.replace("hide", "show"); // Permission granted to display cart total details.
+  calculateCartTotal(); // calculate and display cart total.
+} 

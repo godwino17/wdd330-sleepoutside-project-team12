@@ -8,9 +8,9 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <script src="../js/checkout.js"></script>
+    <script src="../js/checkout.js" type="module"></script>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/style.css" />
   </head>
 
   <body>
@@ -59,8 +59,70 @@
     </header>
 
     <main class="divider">
+      <section class="summary">
+        <h2>Order Summary</h2>
+        <p>Total Items: <span class="num-items"></span></p>
+        <p>Subtotal: <span class="subtotal"></span></p>
+        <p>Tax: <span class="tax"></span></p>
+        <p>Shipping: <span class="shipping-est"></span></p>
+        <p>Total: <span class="order-total"></span></p>
+      </section>
       <section class="products">
         <h2>Review & Place your Order</h2>
+        <form id="my-form" name="checkout">
+          <fieldset>
+            <legend>Customer Name</legend>
+            <div>
+              <label for="firstName">First Name:</label>
+              <input type="text" name="fname" id="firstName" required>
+            </div>
+            <div>
+              <label for="lastName">Last Name:</label>
+              <input type="text" name="lname" id="lastName" required>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Customer Address</legend>
+            <div>
+              <label for="street">Street Address:</label>
+              <input type="text" name="street" id="street" required>
+            </div>
+            <div>
+              <label for="city">City:</label>
+              <input type="text" name="city" id="city" required>
+            </div>
+            <div>
+              <label for="state">State:</label>
+              <input type="text" name="state" id="state" required>
+            </div>
+            <div>
+              <label for="zip-code">Zip Code:</label>
+              <input type="text" name="zip" id="zip-code" required>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Payment</legend>
+            <div>
+              <label for="cardNo">Credit Card Number:</label>
+              <input type="text" name="cardNumber" id="cardNo" required>
+            </div>
+            <div>
+              <label for="expireDate">Expiration Date:</label>
+              <input type="text" name="expiration" id="expireDate" required>
+            </div>
+            <div>
+              <label for="secCode">Security Code:</label>
+              <input type="number" name="code" id="secCode" required>
+            </div>
+          </fieldset>
+          <input type="hidden" id="orderDate" name="orderDate">
+
+          <div>
+            <button type="submit" id="checkoutBtn">Checkout</button>
+          </div>
+        </form>
       </section>
     </main>
 
