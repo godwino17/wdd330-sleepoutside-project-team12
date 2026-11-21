@@ -1,3 +1,4 @@
+import initRegistrationModal from "./registrationModal.js";
 import ProductData from "./ProductData.mjs";
 import ProductList from "./productList.mjs";
 import { countItems } from "./utils.mjs";
@@ -11,3 +12,4 @@ const productList = new ProductList("Tents", dataSource, element);
 productList.init();
 
 countItems();
+initRegistrationModal();

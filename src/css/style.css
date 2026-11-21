@@ -147,6 +147,116 @@ button {
 
 /* End cart icon styles */
 
+/* ===== Login page ===== */
+.login {
+  max-width: 420px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.login h1 {
+  margin-bottom: 0.25rem;
+}
+
+.login__hint {
+  padding: 0 0 1rem;
+  color: #555;
+  font-size: var(--small-font);
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.login__form label {
+  font-weight: bold;
+  font-size: var(--small-font);
+}
+
+.login__form input {
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--light-grey);
+  border-radius: 6px;
+}
+
+.login__form input:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 1px;
+}
+
+.login__form button {
+  margin-top: 0.75rem;
+}
+
+.login__form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login__error {
+  background: #fdecea;
+  border: 1px solid #f5c2c0;
+  color: #8b1a10;
+  padding: 0.65rem 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+  font-size: var(--small-font);
+}
+
+/* ===== Orders page ===== */
+.orders {
+  padding: 1rem;
+}
+
+.orders__status {
+  padding: 0.75rem 0;
+  font-size: var(--small-font);
+  color: #444;
+}
+
+.orders__status--error {
+  color: #8b1a10;
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--small-font);
+}
+
+.orders-table th,
+.orders-table td {
+  text-align: left;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid var(--light-grey);
+  vertical-align: top;
+}
+
+.orders-table th {
+  background: #f5f2ec;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.logout-btn {
+  background: transparent;
+  color: var(--tertiary-color);
+  border: 2px solid var(--tertiary-color);
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  font-size: var(--small-font);
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: var(--tertiary-color);
+  color: white;
+}
+
 .mission {
   position: absolute;
   top: 1rem;
@@ -341,4 +451,96 @@ footer {
   padding: 1rem;
   font-style: italic;
   color: #555;
+}
+
+/* ===== Registration modal ===== */
+.registration-modal {
+  border: none;
+  border-radius: 10px;
+  padding: 0;
+  max-width: 440px;
+  width: calc(100% - 2rem);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.registration-modal::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.registration-modal__inner {
+  position: relative;
+  padding: 1.75rem 1.5rem 1.25rem;
+}
+
+.registration-modal__close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.6rem;
+  background: transparent;
+  border: none;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--dark-grey);
+}
+
+.registration-modal__close:hover {
+  color: #000;
+}
+
+.registration-modal h2 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-headline);
+  font-size: 1.6rem;
+  color: var(--tertiary-color);
+}
+
+.registration-modal p {
+  padding: 0;
+  margin: 0 0 1rem;
+  line-height: 1.45;
+}
+
+.registration-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.registration-modal__form label {
+  font-size: var(--small-font);
+  font-weight: bold;
+}
+
+.registration-modal__form input {
+  padding: 0.65rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--light-grey);
+  border-radius: 6px;
+}
+
+.registration-modal__form input:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 1px;
+}
+
+.registration-modal__form button {
+  margin: 0.25rem 0 0;
+  padding: 0.75rem 1rem;
+  background: var(--secondary-color);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.registration-modal__form button:hover {
+  background: var(--tertiary-color);
+}
+
+.registration-modal__fineprint {
+  margin-top: 0.75rem !important;
+  font-size: 0.75rem;
+  color: #666;
 }

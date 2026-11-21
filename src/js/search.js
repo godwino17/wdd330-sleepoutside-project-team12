@@ -9,13 +9,15 @@ const titleEl = document.querySelector("#searchTitle");
 const query = (getParam("q") || "").trim();
 
 // Keep the input value in sync when landing on ?q=...
-const searchInput = document.querySelector("input[name=\"q\"]");
+const searchInput = document.querySelector(`input[name="q"]`);
 if (searchInput) searchInput.value = query;
 
 async function init() {
-  try { countItems(); } catch (err) {
+  try {
+    countItems();
+  } catch (err) {
     console.warn("badge failed", err);
-  }// paint the badge on load
+  } // paint the badge on load
 
   if (!query) {
     titleEl.textContent = "Search Products";

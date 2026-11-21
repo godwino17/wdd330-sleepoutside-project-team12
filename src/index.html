@@ -8,6 +8,45 @@
     <script src="js/main.js" type="module"></script>
   </head>
 
+  <dialog
+    id="registration-modal"
+    class="registration-modal"
+    aria-labelledby="reg-title"
+    aria-describedby="reg-desc"
+  >
+    <div class="registration-modal_inner">
+      <button
+        type="button"
+        class="registration-modal_close"
+        aria-label="Close registration modal"
+      >
+        &times;
+      </button>
+      <h2 id="reg-title">🎉 Win a $250 Gear Giveaway!</h2>
+      <p id="reg-desc">
+        Register for a free SleepOutside account this month and you'll
+        automatically be entered to win a $250 gear package of your choice.
+        Members also get early access to new products and exclusive discounts.
+      </p>
+      <form class="registration-model_form" novalidate>
+        <label for="reg-email">Email Address:</label>
+        <input
+          type="email"
+          id="reg-email"
+          name="email"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+        />
+        <button type="submit">Register &amp; Enter</button>
+      </form>
+
+      <p class="registration-modal_fineprint">
+        No purchase necessary. One entry per person. Giveaway ends November 30.
+      </p>
+    </div>
+  </dialog>
+
   <body>
     <header class="divider">
       <div class="logo">

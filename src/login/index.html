@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Admin Login</title>
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/login.js" type="module"></script>
+  </head>
+
+  <body>
+    <header class="divider" id="main-header">
+      <div class="logo">
+        <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
+        <a href="/index.html"> Sleep<span class="highlight">Outside</span></a>
+      </div>
+    </header>
+
+    <main class="divider">
+      <section class="login">
+        <h1>Admin Login</h1>
+        <p class="login__hint">
+          Sign in to review and process incoming orders.
+        </p>
+
+        <!-- Error region: filled by JS; hidden when empty -->
+        <div class="login__error" id="login-error" role="alert" hidden></div>
+
+        <form id="login-form" class="login__form" novalidate>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="username"
+            placeholder="you@example.com"
+            required
+          />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            autocomplete="current-password"
+            required
+          />
+
+          <button type="submit" id="login-submit">Log In</button>
+        </form>
+      </section>
+    </main>
+
+    <footer id="main-footer">&copy;NOT a real business</footer>
+  </body>
+</html>
