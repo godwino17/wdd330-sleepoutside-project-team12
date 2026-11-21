@@ -1,23 +1,19 @@
-import { initNewsletterSignup } from "./newsletter.mjs";
+import ProductData from "./ProductData.mjs";
+import ProductList from "./productList.mjs";
+import { countItems, loadHeaderFooter } from "./utils.mjs";
+import Alert from "./alert.js";
 
-initNewsletterSignup();
+new Alert().init();
+   const { default: ProductData } = await import("./ExternalServices.mjs");
+// Load the header and footer of the page before initializing the product list view
+loadHeaderFooter();
 
-async function initHomePageModules() {
- try {
-   const { default: ProductData } = await import("./ProductData.mjs");
-   const { default: ProductList } = await import("./productList.mjs");
-   const { countItems } = await import("./utils.mjs");
+const dataSource = new ProductData("tents");
 
-   const dataSource = new ProductData("tents");
-   const element = document.querySelector(".product-list");
-   const productList = new ProductList("Tents", dataSource, element);
+const element = document.querySelector(".product-list");
 
-   productList.init();
-   countItems();
- } catch (error) {
+const productList = new ProductList("Tents", dataSource, element);
 
-   console.warn("Product modules skipped on Live Server:", error.message);
- }
-}
+productList.init();
 
-initHomePageModules();
+countItems();
