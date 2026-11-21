@@ -165,7 +165,8 @@ button {
   text-align: center;
 }
 
-.products, .summary {
+.products,
+.summary {
   margin-top: 2rem;
   padding: 1rem;
 }
@@ -308,7 +309,7 @@ button {
 
 .checkout {
   margin: 0 auto;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 5rem;
   & a {
     text-decoration: none;
@@ -316,7 +317,7 @@ button {
     padding: 3px;
     border-bottom: 2px solid var(--secondary-color);
     &:hover {
-        color: midnightblue;
+      color: midnightblue;
     }
   }
 }
@@ -332,6 +333,69 @@ button {
 .product-category a {
   text-decoration: none;
   color: green;
+}
+
+.productImage {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.imgDiv {
+  width: 232px;
+  height: 252px;
+  margin: 0 auto;
+}
+
+.alert {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  /* justify-content: space-between; */
+  background-color: orange;
+  margin: 1rem 5px 0 5px;
+  font-size: small;
+  font-weight: 700;
+  & button {
+    background-color: inherit;
+    color: black;
+    font-weight: 700;
+  }
+  & p {
+    padding: 5px;
+    align-self: center;
+  }
+}
+
+.summary h2,
+.products h2 {
+  font-size: larger;
+  margin-bottom: 1rem;
+}
+
+fieldset {
+  padding: 0.7rem;
+  margin-bottom: 0.5rem;
+  border: 2px solid black;
+  & legend {
+    font-style: italic;
+    padding: 0 3px;
+  }
+  & label,
+  & input {
+    display: block;
+    width: 100%;
+    font-weight: 600;
+    font-size: medium;
+    padding: 3px;
+  }
+}
+
+.success {
+  padding: 1rem;
+  text-align: center;
+  & h1,
+  & p {
+    font-size: medium;
+  }
 }
 
 @media screen and (min-width: 500px) {
@@ -352,6 +416,23 @@ button {
   .product-category img {
     width: 100px;
     height: 100px;
+  }
+
+  .form-div {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    & .products {
+      grid-column: 1/2;
+      grid-row: 1/2;
+    }
+    & .summary {
+      margin-top: 10rem;
+      margin-right: 0.5rem;
+      height: 300px;
+      padding-left: 0;
+      border: 1px solid black;
+      box-shadow: 2px 2px 9px 5px black;
+    }
   }
 }
 

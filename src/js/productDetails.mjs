@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage, countItems } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, countItems, alertMessage, removeAllAlerts } from "./utils.mjs";
 
 export default class productDetails {
     constructor(productID, dataSource) {
@@ -8,9 +8,11 @@ export default class productDetails {
     }
 
     addProductToCart() {
+        removeAllAlerts
         // Get pre existing items from Localstorage, if none exist start from empty array.
         const cartItems = getLocalStorage("so-cart") || [];
         cartItems.push(this.product); // Add item(product) to the array.
+        alertMessage(`"${this.product.Name}" has been added to cart.`);
         setLocalStorage("so-cart", cartItems); // Set the array back to Localstorage.
         countItems();
     }
@@ -20,7 +22,7 @@ export default class productDetails {
         document.querySelector("h2").textContent = product.NameWithoutBrand;
 
         const productImg = document.querySelector(".productImage");
-        productImg.src = product.Image;
+        productImg.src = product.Images.PrimaryMedium;
         productImg.alt = product.NameWithoutBrand;
 
         document.querySelector(".product-card__price").textContent = `$${product.FinalPrice}`;

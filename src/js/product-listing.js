@@ -6,7 +6,8 @@ loadHeaderFooter();
 
 const category = getParam("category");
 
-document.querySelector("h2").textContent += `: ${category.charAt(0).toUpperCase() + category.slice(1)}`;
+document.querySelector("h2").textContent +=
+  `: ${category.charAt(0).toUpperCase() + category.slice(1)}`;
 
 const dataSource = new ExternalServices();
 

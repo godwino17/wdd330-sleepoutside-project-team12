@@ -70,3 +70,30 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerPath, headerElement);
   renderWithTemplate(footerPath, footerElement);
 }
+
+export function alertMessage(message, scroll=true) {
+  const alert = document.createElement("div");
+  alert.classList = "alert";
+
+  const text = document.createElement("p");
+  text.textContent = message;
+
+  const closeBtn = document.createElement("button");
+  closeBtn.type = "button";
+  closeBtn.textContent = "X";
+  closeBtn.setAttribute("aria-label", "Dismiss message");
+
+  closeBtn.addEventListener("click", () => alert.remove())
+
+  alert.append(text, closeBtn);
+
+  const main = document.querySelector("main");
+  main.prepend(alert); // Add at the beginning of main element 
+  if (scroll) {
+    window.scrollTo(0, 0);
+  }
+}
+
+export function removeAllAlerts() {
+  document.querySelectorAll(".alert").forEach(alert => alert.remove());
+}

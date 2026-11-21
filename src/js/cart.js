@@ -14,9 +14,9 @@ function calculateCartTotal() {
 
   // check if the is item in the cart before calculating the price.
   if (cart.length !== 0) {
-    cart.forEach(price => {
+    cart.forEach((price) => {
       total += price.FinalPrice;
-    })
+    });
     // Display the total price.
     document.getElementById("cart-total").textContent = `$${total.toFixed(2)}`;
   }
@@ -54,7 +54,7 @@ function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimaryMedium}"
       alt="${item.Name}"
     />
   </a>

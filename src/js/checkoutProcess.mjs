@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, alertMessage, removeAllAlerts } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
@@ -53,7 +53,7 @@ export default class CheckoutProcess {
         // calculate the total of all the items in the cart
         const amount = this.list.map((item) => item.FinalPrice);
         this.itemTotal = amount.reduce((sum, item) => sum + item);
-        summaryElement.innerText = `$${this.itemTotal}`;
+        summaryElement.innerText = `$${this.itemTotal.toFixed(2)}`;
     }
 
     calculateOrderTotal() {
@@ -86,13 +86,24 @@ export default class CheckoutProcess {
         order.shipping = this.shipping;
         order.tax = this.tax;
         order.items = packageItems(this.list);
-        console.log(order);
+        // console.log(order);
 
         try {
-            const response = await services.checkout(order);
-            console.log(response);
+            await services.checkout(order);
+            // clear out the cart upon successful order placement
+            setLocalStorage("so-cart", []);
+            // Take/Redirect user to the success confirmation page.
+            location.assign("/checkout/success.html");
         } catch (e) {
+            removeAllAlerts();
             console.log(e);
+            console.log("failed");
+            if (e.message.cardNumber === "Invalid Card Number") {
+                alertMessage("Invalid Card Number");
+            }
+            if (e.message.expiration === "Card expired") {
+                alertMessage("Invalid expiration date");
+            }
         }
     }
 }
