@@ -24,6 +24,21 @@ export default class productDetails {
         productImg.alt = product.NameWithoutBrand;
 
         document.querySelector(".product-card__price").textContent = `$${product.FinalPrice}`;
+                // Show a discount badge if the product is on sale
+        const priceElement = document.querySelector(".product-card__price");
+        const oldBadge = document.querySelector(".discount-badge");
+        if (oldBadge) oldBadge.remove(); // avoid duplicate badges on re-render
+
+        if (product.FinalPrice < product.SuggestedRetailPrice) {
+            const savings = (product.SuggestedRetailPrice - product.FinalPrice).toFixed(2);
+            const percent = Math.round(
+                ((product.SuggestedRetailPrice - product.FinalPrice) / product.SuggestedRetailPrice) * 100
+            );
+            const badge = document.createElement("p");
+            badge.className = "discount-badge";
+            badge.textContent = `Save $${savings}! (${percent}% off)`;
+            priceElement.before(badge);
+        }
         document.querySelector(".product__color").textContent = product.Colors[0].ColorName;
         document.querySelector(".product__description").textContent = product.DescriptionHtmlSimple;
 
